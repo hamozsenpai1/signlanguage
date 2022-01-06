@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="/static/icons.json">
+    
+    
+    <!-- <link rel="shortcut icon" href="/sign-language.png" type="image/x-icon"> -->
+    <!-- <script type='text/javascript' src="/static/Script.js"></script> -->
+    
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        if('serviceWorker' in navigator){
+           window.addEventListener('load',()=>{
+               navigator.serviceWorker.register('../sw.js')
+               .then(reg=>{
+                   console.log('registered',reg);
+               }).catch(err=>{
+                   console.log('failed',err)
+               });
+           });
+        }
+    </script>
+
+    
+    <form action="/pred" method="POST" enctype="multipart/form-data">
+        <input type="file" name="img" >
+        <input type="submit" name="bbnt">
+    </form>
+
+    <!-- {% if prediction %}
+    <p >image is {{prediction}}</p>
+    {% endif %} -->
+</body>
+</html>
